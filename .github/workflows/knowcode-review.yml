@@ -1,0 +1,31 @@
+# The end-to-end run of knowcode-ci's GitHub Action (https://github.com/bubstackdev/knowcode-ci) for KnowCode's 0.8
+# release gate: on a pull request within this mirror, it reviews the change in KnowCode's restricted mode, posts the
+# review as one comment and uploads its SARIF to code scanning. Only the workflow's own token is used.
+name: KnowCode review
+
+on: pull_request
+
+permissions:
+  contents: read
+  pull-requests: write
+  security-events: write
+
+jobs:
+  review:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+      - id: kc
+        # Pinned to the action's commit under test (knowcode-ci #1) until its first release.
+        uses: bubstackdev/knowcode-ci@6f9048a5284bb520b5672db3c6dde6f1b4fa0de5
+        with:
+          version: 0.8.0-rc.1
+      # The evidence the release gate keeps: the review and the restricted-mode checks (checks.json beside them).
+      - if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: knowcode-review
+          path: ${{ runner.temp }}/knowcode-review/
+          if-no-files-found: warn

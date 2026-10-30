@@ -1,0 +1,11 @@
+# The end-to-end run of knowcode-ci's GitLab template (https://github.com/bubstackdev/knowcode-ci) for KnowCode's 0.8
+# release gate, on gitlab.com/bubstackdev/kc-e2e-serilog: on a merge request within that project, it reviews the
+# change in KnowCode's restricted mode, posts the review as a note (with the project's KNOWCODE_GITLAB_TOKEN) and
+# reports a code quality report.
+include:
+  # Pinned to the template's commit under test (knowcode-ci #1) until its first release.
+  - remote: https://raw.githubusercontent.com/bubstackdev/knowcode-ci/6f9048a5284bb520b5672db3c6dde6f1b4fa0de5/gitlab/knowcode-review.gitlab-ci.yml
+
+variables:
+  KNOWCODE_VERSION: "0.8.0-rc.1"
+  KNOWCODE_CI_REF: "6f9048a5284bb520b5672db3c6dde6f1b4fa0de5"

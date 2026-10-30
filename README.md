@@ -1,3 +1,12 @@
+> **kc-e2e-serilog: a test mirror, not Serilog.** This repository is a copy of
+> [serilog/serilog](https://github.com/serilog/serilog) at commit `81af75f3a5e28ec9f5be18ef74357a9914a51745`, kept by
+> the KnowCode project for one purpose: the end-to-end runs of [knowcode-ci](https://github.com/bubstackdev/knowcode-ci)
+> (its GitHub Action here, its GitLab template at gitlab.com/bubstackdev/kc-e2e-serilog) for KnowCode's 0.8 release
+> gate. Its pull requests are test changes, never meant for Serilog. Only one commit is added on top of Serilog's
+> history: this note, the review workflow (`.github/workflows/knowcode-review.yml`, `.gitlab-ci.yml`), and Serilog's
+> own CI workflow removed so that test changes don't run it. The mirror is archived once the gate is recorded. For
+> Serilog itself, go to [serilog/serilog](https://github.com/serilog/serilog); its license (Apache-2.0) is unchanged.
+
 # Serilog&nbsp;[![Build status](https://github.com/serilog/serilog/actions/workflows/ci.yml/badge.svg?branch=dev)](https://github.com/serilog/serilog/actions)&nbsp;[![NuGet Version](https://img.shields.io/nuget/v/Serilog.svg?style=flat)](https://www.nuget.org/packages/Serilog/)&nbsp;[![NuGet Downloads](https://img.shields.io/nuget/dt/serilog.svg)](https://www.nuget.org/packages/Serilog/)&nbsp;[![Stack Overflow](https://img.shields.io/badge/stack%20overflow-serilog-orange.svg)](https://stackoverflow.com/questions/tagged/serilog)
 
 Serilog is a diagnostic logging library for .NET applications. It is easy to set up, has a clean API, and runs on all recent .NET platforms. While it's useful even in the simplest applications, Serilog's support for structured logging shines when instrumenting complex, distributed, and asynchronous applications and systems.
