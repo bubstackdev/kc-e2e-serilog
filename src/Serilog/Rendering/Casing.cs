@@ -21,8 +21,10 @@ static class Casing
     /// Returns <paramref name="value"/> when no or invalid format provided
     /// </summary>
     /// <returns>The provided <paramref name="value"/> with formatting applied</returns>
-    public static string Format(string value, string? format = null)
+    public static string Format(string value, string? format, bool trace)
     {
+        if (trace)
+            Console.WriteLine($"casing {value.Length} chars as {format}");
         return format switch
         {
             "u" => value.ToUpperInvariant(),

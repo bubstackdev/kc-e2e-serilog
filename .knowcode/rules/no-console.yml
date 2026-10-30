@@ -1,0 +1,7 @@
+# A test rule for the knowcode-ci end-to-end run: library code writes through SelfLog, never to the console.
+id: no-console-writeline
+language: csharp
+severity: warning
+message: Library code writes diagnostics through SelfLog, not Console.WriteLine.
+rule:
+  pattern: Console.WriteLine($$$ARGS)
